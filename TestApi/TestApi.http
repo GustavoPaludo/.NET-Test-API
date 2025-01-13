@@ -1,6 +1,6 @@
-@TestAPI_HostAddress = http://localhost:5022
+@TestAPI_HostAddress = http://localhost:5269
 
-GET {{TestAPI_HostAddress}}/testapi/
+GET {{TestAPI_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

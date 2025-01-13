@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TestAPI.Models;
+using TestAPI.Services.ProductServices;
 
 namespace TestAPI.Controllers
 {
@@ -7,23 +8,26 @@ namespace TestAPI.Controllers
     [Route("api")]
     public class ProductController : ControllerBase
     {
-        private static List<Product> Products = new List<Product> {
-            new Product { Id = 1, Name = "Product 1", Price = 9.99M },
-            new Product { Id = 2, Name = "Product 2", Price = 19.99M },
-        };
+        private readonly ProductService _productService;
+
+        public ProductController(ProductService productService)
+        {
+            _productService = productService;
+        }
 
         //Simple get example
         [HttpGet("get-product")]
         public IEnumerable<Product> GetProducts()
         {
-            return Products;
+            return _productService.GetProducts();
         }
 
         //Example with route parameter
         [HttpGet("get-product/{id}")]
         public ActionResult<Product> GetProduct(int id)
         {
-            var product = Products.FirstOrDefault(p => p.Id == id);
+            var product = _productService.GetProductById(id);
+
             if (product == null)
             {
                 return NotFound();
@@ -35,7 +39,7 @@ namespace TestAPI.Controllers
         [HttpGet("search")]
         public ActionResult<IEnumerable<Product>> GetProductsByPrice(decimal? minPrice, decimal? maxPrice)
         {
-            var result = Products.Where(p => (!minPrice.HasValue || p.Price >= minPrice) && (!maxPrice.HasValue || p.Price <= maxPrice));
+            var result = _productService.GetProductsByMinAndMaxPrice(minPrice, maxPrice);
             return result.ToList();
         }
 
@@ -48,24 +52,27 @@ namespace TestAPI.Controllers
                 return BadRequest("Invalid product data.");
             }
 
-            product.Id = Products.Max(p => p.Id) + 1;
-            Products.Add(product);
+            int newProductId = _productService.CreateProduct(product);
 
-            return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
+            return CreatedAtAction(nameof(GetProduct), new { id = newProductId }, product);
         }
+
 
         //Example put request with queryparameter and payload
         [HttpPut("update-product")]
-        public ActionResult<Product> UpdateProduct(int? id, [FromBody] Product updatedProduct)
+        public IActionResult UpdateProduct(int id, [FromBody] Product updatedProduct)
         {
-            var existingProduct = Products.FirstOrDefault(p => p.Id == id);
-            if (existingProduct == null)
+            if (updatedProduct == null)
+            {
+                return BadRequest("Invalid product data.");
+            }
+
+            var updated = _productService.UpdateProduct(id, updatedProduct);
+
+            if (!updated)
             {
                 return NotFound();
             }
-
-            existingProduct.Name = updatedProduct.Name;
-            existingProduct.Price = updatedProduct.Price;
 
             return NoContent();
         }

@@ -1,3 +1,10 @@
+C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.csproj.AssemblyReference.cache
+C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.AssemblyInfoInputs.cache
+C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.AssemblyInfo.cs
+C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.csproj.CoreCompileInputs.cache
+C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\gusta\source\repos\TestAPI\TestAPI\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\gusta\source\repos\TestAPI\TestAPI\bin\Debug\net9.0\appsettings.json
 C:\Users\gusta\source\repos\TestAPI\TestAPI\bin\Debug\net9.0\TestAPI.staticwebassets.endpoints.json
@@ -8,13 +15,6 @@ C:\Users\gusta\source\repos\TestAPI\TestAPI\bin\Debug\net9.0\TestAPI.dll
 C:\Users\gusta\source\repos\TestAPI\TestAPI\bin\Debug\net9.0\TestAPI.pdb
 C:\Users\gusta\source\repos\TestAPI\TestAPI\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\gusta\source\repos\TestAPI\TestAPI\bin\Debug\net9.0\Microsoft.OpenApi.dll
-C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.csproj.AssemblyReference.cache
-C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.AssemblyInfoInputs.cache
-C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.AssemblyInfo.cs
-C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.csproj.CoreCompileInputs.cache
-C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\scopedcss\bundle\TestAPI.styles.css
 C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\staticwebassets.development.json
