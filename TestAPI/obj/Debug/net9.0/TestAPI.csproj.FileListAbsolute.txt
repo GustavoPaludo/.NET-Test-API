@@ -32,3 +32,8 @@ C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\refint\TestAPI.dll
 C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.pdb
 C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\TestAPI.genruntimeconfig.cache
 C:\Users\gusta\source\repos\TestAPI\TestAPI\obj\Debug\net9.0\ref\TestAPI.dll
+C:\Users\gusta\source\repos\TestAPI\TestAPI\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\gusta\source\repos\TestAPI\TestAPI\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\gusta\source\repos\TestAPI\TestAPI\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\gusta\source\repos\TestAPI\TestAPI\bin\Debug\net9.0\MySqlConnector.dll
+C:\Users\gusta\source\repos\TestAPI\TestAPI\bin\Debug\net9.0\Pomelo.EntityFrameworkCore.MySql.dll

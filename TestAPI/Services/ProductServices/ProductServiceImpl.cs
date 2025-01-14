@@ -1,58 +1,51 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using TestAPI.Models;
+﻿using TestAPI.Models;
+using TestAPI.Handlers;
 
 namespace TestAPI.Services.ProductServices
 {
     public class ProductServiceImpl : ProductService
     {
+        private readonly ProductQueryHandler _queryHandler;
+
+        public ProductServiceImpl(ProductQueryHandler queryHandler)
+        {
+            _queryHandler = queryHandler;
+        }
+
         public Product GetProductById(int id)
         {
-            List<Product> productList = new List<Product>();
-            productList = this.GetProducts();
-
-            if (productList == null || !productList.Any())
+            var product = _queryHandler.GetProductById(id);
+            if (product == null)
             {
-                return null;
+                throw new KeyNotFoundException("Product not found");
             }
-
-            return productList.FirstOrDefault(p => p.Id == id);
+            return product;
         }
 
         public List<Product> GetProducts()
         {
-            List<Product> Products = new List<Product>();
-            Products.Add(new Product { Id = 1, Name = "Product 1", Price = 9.99M });
-            Products.Add(new Product { Id = 2, Name = "Product 2", Price = 19.99M });
-
-            return Products;
+            return _queryHandler.GetAllProducts();
         }
 
         public List<Product> GetProductsByMinAndMaxPrice(decimal? minPrice, decimal? maxPrice)
         {
-            List<Product> producList = this.GetProducts();
-
-            return producList.Where(p => (!minPrice.HasValue || p.Price >= minPrice) && (!maxPrice.HasValue || p.Price <= maxPrice)).ToList();
+            return _queryHandler.GetProductsByPriceRange(minPrice, maxPrice);
         }
 
         public int CreateProduct(Product product)
         {
-            var products = GetProducts();
+            if (string.IsNullOrWhiteSpace(product.Name))
+            {
+                throw new ArgumentException("Product name cannot be empty.");
+            }
 
-            int newId = products.Any() ? products.Max(p => p.Id) + 1 : 1;
-            product.Id = newId;
-
-            products.Add(product);
-
-            return newId;
+            _queryHandler.AddProduct(product);
+            return product.Id;
         }
 
         public bool UpdateProduct(int id, Product updatedProduct)
         {
-            List<Product> productList = new List<Product>();
-            productList = this.GetProducts();
-
-            var existingProduct = productList.FirstOrDefault(p => p.Id == id);
-
+            var existingProduct = _queryHandler.GetProductById(id);
             if (existingProduct == null)
             {
                 return false;
@@ -61,6 +54,7 @@ namespace TestAPI.Services.ProductServices
             existingProduct.Name = updatedProduct.Name;
             existingProduct.Price = updatedProduct.Price;
 
+            _queryHandler.UpdateProduct(existingProduct);
             return true;
         }
     }

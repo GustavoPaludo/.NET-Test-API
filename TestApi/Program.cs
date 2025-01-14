@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using TestAPI.Data;
+using TestAPI.Handlers;
 using TestAPI.Services.ProductServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +10,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddScoped<ProductQueryHandler>();
 builder.Services.AddScoped<ProductService, ProductServiceImpl>();
+
+builder.Services.AddDbContext<ProductDbContext>(options =>
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
+    ));
 
 var app = builder.Build();
 
